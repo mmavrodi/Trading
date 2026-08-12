@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Trading.Cache\Trading.Cache.csproj" />
+    <ProjectReference Include="..\Trading.DataAccess\Trading.DataAccess.csproj" />
+    <ProjectReference Include="..\Trading.Repository.Contracts\Trading.Repository.Contracts.csproj" />
+    <ProjectReference Include="..\Trading.Service.Contracts\Trading.Service.Contracts.csproj" />
+  </ItemGroup>
+
+</Project>

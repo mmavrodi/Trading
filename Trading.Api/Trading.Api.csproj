@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="10.2.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.11">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Trading.Background.Services\Trading.Background.Services.csproj" />
+    <ProjectReference Include="..\Trading.DataAccess\Trading.DataAccess.csproj" />
+    <ProjectReference Include="..\Trading.DTO.Models\Trading.DTO.Models.csproj" />
+    <ProjectReference Include="..\Trading.Repository\Trading.Repository.csproj" />
+    <ProjectReference Include="..\Trading.Service.Contracts\Trading.Service.Contracts.csproj" />
+    <ProjectReference Include="..\Trading.Services\Trading.Services.csproj" />
+  </ItemGroup>
+
+</Project>

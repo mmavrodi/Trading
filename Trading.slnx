@@ -1,0 +1,16 @@
+<Solution>
+  <Folder Name="/tests/">
+    <Project Path="Trading.Cache.Tests/Trading.Cache.Tests.csproj" Id="b974bedd-1b86-4e23-b82b-dc442f1a8124" />
+    <Project Path="Trading.Services.Tests/Trading.Services.Tests.csproj" Id="4deffe98-2715-4172-894e-a133fcc15a6e" />
+  </Folder>
+  <Project Path="Trading.Api/Trading.Api.csproj" Id="0847b707-9adf-4373-a31d-c0abd3449dac" />
+  <Project Path="Trading.Background.Services/Trading.Background.Services.csproj" Id="ddf92e90-d1eb-43e6-a2d2-52dc7aaec926" />
+  <Project Path="Trading.Cache/Trading.Cache.csproj" Id="bdf45f0b-8586-4bd5-8c5e-72825bc23d21" />
+  <Project Path="Trading.Core.Models/Trading.Core.Models.csproj" />
+  <Project Path="Trading.DataAccess/Trading.DataAccess.csproj" Id="dbe85df4-885f-4f83-898a-a44d927d9c3c" />
+  <Project Path="Trading.DTO.Models/Trading.DTO.Models.csproj" Id="02317aff-f25c-4ad7-91ac-cee9f567edd5" />
+  <Project Path="Trading.Repository.Contracts/Trading.Repository.Contracts.csproj" Id="a15a1f9e-29bd-4103-a364-c41fca8f9604" />
+  <Project Path="Trading.Repository/Trading.Repository.csproj" Id="68ba05b4-ec08-4edc-9374-ae4c3d3a5307" />
+  <Project Path="Trading.Service.Contracts/Trading.Service.Contracts.csproj" Id="0866fd24-2c0e-49f8-90f4-25d0dee05702" />
+  <Project Path="Trading.Services/Trading.Services.csproj" Id="3fa33714-f11d-41a7-8ba7-a88d0c9a12e7" />
+</Solution>

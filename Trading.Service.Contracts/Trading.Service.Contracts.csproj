@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Trading.Core.Models\Trading.Core.Models.csproj" />
+    <ProjectReference Include="..\Trading.DTO.Models\Trading.DTO.Models.csproj" />
+  </ItemGroup>
+
+</Project>
