@@ -40,7 +40,7 @@ namespace Trading.Services
                 query = query.Where(x => x.CreatedAt >= filter.FromDate.Value);
 
             if (filter.ToDate.HasValue)
-                query = query.Where(x => x.CreatedAt >= filter.ToDate.Value);
+                query = query.Where(x => x.CreatedAt <= filter.ToDate.Value);
 
             return await query.OrderByDescending(o => o.CreatedAt).Take(100).ToListAsync(cancellationToken).ConfigureAwait(false);
         }
@@ -94,7 +94,6 @@ namespace Trading.Services
                 targetPrice = currentState.BidPrice + (currentState.BidPrice * 0.0003m);
             }
 
-            // Формула за авто-количество (динамично спрямо нотионал от 10,000 USD / цена)
             decimal calculatedQuantity = Math.Round(10_000m / targetPrice, 2);
 
             var autoOrder = new TradeOrder

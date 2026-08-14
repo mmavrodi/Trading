@@ -30,14 +30,12 @@ namespace Trading.Background.Services
             {
                 try
                 {
-                    // 1. Атомарно обновяване на In-Memory цената
                     var (previousState, currentState) = _priceCache.UpdateAndGetPrevious(priceUpdate);
 
                     using var scope = _scopeFactory.CreateScope();
                     var dbContext = scope.ServiceProvider.GetRequiredService<ITradingDbContext>();
-                    var tradeProcessor = scope.ServiceProvider.GetRequiredService<ITradingProcessService>();
+                    var tradeService = scope.ServiceProvider.GetRequiredService<ITradingProcessService>();
 
-                    // 2. Записване/обновяване на последното ценово състояние в DB
                     var existingPrice = await dbContext.SymbolPrices.FindAsync(new object[] { currentState.Symbol }, cancelationToken);
                     if (existingPrice == null)
                     {
@@ -54,11 +52,10 @@ namespace Trading.Background.Services
                     }
                     await dbContext.SaveAsync(cancelationToken);
 
-                    await tradeProcessor.EvaluateAndExecuteAutoTradeAsync(previousState, currentState, cancelationToken);
+                    await tradeService.EvaluateAndExecuteAutoTradeAsync(previousState, currentState, cancelationToken);
                 }
                 catch (Exception ex)
                 {
-                    // В реално производство тук се ползва ILogger
                     Console.WriteLine($"Error processing price update: {ex.Message}");
                 }
             }

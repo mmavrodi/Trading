@@ -27,7 +27,6 @@ namespace Trading.Background.Services
 
             while (!stoppingToken.IsCancellationRequested)
             {
-                // Случайна промяна в цената
                 decimal delta = (decimal)(_random.NextDouble() - 0.49) * 2m;
                 basePrice = Math.Max(10m, basePrice + delta);
 
