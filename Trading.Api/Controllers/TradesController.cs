@@ -16,23 +16,23 @@ namespace Trading.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> SubmitTrade([FromBody] TradeDTO trade)
+        public async Task<IActionResult> SubmitTrade([FromBody] TradeDTO trade, CancellationToken cancellationToken)
         {
-            var result = await _tradingProcessService.ProcessManualOrderAsync(trade, default);
+            var result = await _tradingProcessService.ProcessManualOrderAsync(trade, cancellationToken);
             return Ok(result);
         }
 
         [HttpGet("history")]
-        public async Task<IActionResult> GetTradeOrders([FromQuery] TradeFilterDTO filter)
+        public async Task<IActionResult> GetTradeOrders([FromQuery] TradeFilterDTO filter, CancellationToken cancellationToken)
         {
-            var res = await _tradingProcessService.GetTradeOrdersAsync(filter, default);
+            var res = await _tradingProcessService.GetTradeOrdersAsync(filter, cancellationToken);
             return Ok(res);
         }
 
         [HttpGet("{symbol}")]
-        public async Task<IActionResult> GetOrdersBySymbol(string symbol)
+        public async Task<IActionResult> GetOrdersBySymbol(string symbol, CancellationToken cancellationToken)
         {
-            var res = await _tradingProcessService.GetTradeOrdersAsync(new TradeFilterDTO(symbol, null, null, null), default);
+            var res = await _tradingProcessService.GetTradeOrdersAsync(new TradeFilterDTO(symbol, null, null, null), cancellationToken);
             return Ok(res);
         }
     }
