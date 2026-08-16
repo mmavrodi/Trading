@@ -21,11 +21,9 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddControllers();
 
-// FluentValidation: automatic model validation and validator discovery
 builder.Services.AddFluentValidationAutoValidation();
 builder.Services.AddValidatorsFromAssemblyContaining<TradeDTOValidator>();
 
-// Return RFC-compliant ProblemDetails for invalid model state (used by [ApiController])
 builder.Services.Configure<ApiBehaviorOptions>(options =>
 {
     options.InvalidModelStateResponseFactory = context =>
