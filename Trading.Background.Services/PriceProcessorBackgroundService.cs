@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using System.Threading.Channels;
 using Trading.Cache;
 using Trading.DataAccess;
@@ -13,15 +14,18 @@ namespace Trading.Background.Services
         private readonly Channel<PriceUpdateDTO> _channel;
         private readonly IPriceCache _priceCache;
         private readonly IServiceScopeFactory _scopeFactory;
+        private readonly ILogger<PriceProcessorBackgroundService> _logger;
 
         public PriceProcessorBackgroundService(
             Channel<PriceUpdateDTO> channel,
             IPriceCache priceCache,
-            IServiceScopeFactory scopeFactory)
+            IServiceScopeFactory scopeFactory,
+            ILogger<PriceProcessorBackgroundService> logger)
         {
             _channel = channel;
             _priceCache = priceCache;
             _scopeFactory = scopeFactory;
+            _logger = logger;
         }
 
         protected override async Task ExecuteAsync(CancellationToken cancelationToken)
@@ -56,7 +60,7 @@ namespace Trading.Background.Services
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"Error processing price update: {ex.Message}");
+                    _logger.LogError(ex, "Unhandled exception while processing request. Error {error}", ex.Message);
                 }
             }
         }

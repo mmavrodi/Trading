@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="11.11.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Trading.Cache\Trading.Cache.csproj" />
     <ProjectReference Include="..\Trading.DataAccess\Trading.DataAccess.csproj" />
     <ProjectReference Include="..\Trading.Repository.Contracts\Trading.Repository.Contracts.csproj" />
