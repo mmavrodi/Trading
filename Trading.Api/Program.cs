@@ -28,20 +28,16 @@ builder.Services.AddDbContext<TradingDbContext>(options =>
 
 builder.Services.AddScoped<ITradingDbContext>(provider => provider.GetService<TradingDbContext>()!);
 
-// Thread-safe Singleton Cache за последни цени
 builder.Services.AddSingleton<IPriceCache, PriceCache>();
 
-// Thread-safe Singleton Конфигурация за търговски правила
 builder.Services.AddSingleton<ITradingRulesRepository, TradingRulesRepository>();
 
-// Rules Engine & Business Services
 builder.Services.AddScoped<ITradingRulesService, TradingRulesService>();
 builder.Services.AddScoped<ITradingProcessService, TradingProcessService>();
 
-// Channel за асинхронно подаване на тикове
 var priceChannel = Channel.CreateUnbounded<PriceUpdateDTO>(new UnboundedChannelOptions
 {
-    SingleReader = true // Оптимизация: един BackgroundService за обработка
+    SingleReader = true
 });
 builder.Services.AddSingleton(priceChannel);
 
